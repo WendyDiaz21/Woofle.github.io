@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>WOOFLE</title>
+    <link rel="stylesheet" href="../WOOFLE PAGINA WEB/parcialCSS woofle.css"> 
+    <link rel="icon" type="imagen/icon" href="../WOOFLE PAGINA WEB/ICONO.jpg">
+</head>
+
+
+<body>
+
+
+    <button id="soundButton">
+    <img src="volumen.png" alt="Sonido">
+</button>
+
+
+<audio id="audio" src="💲Música para Aumentar las ventas _ Música para vender más _Shopping - Mall Music 💲✔️.mp3"></audio>
+
+<script>
+    const button = document.getElementById('soundButton');
+    const audio = document.getElementById('audio');
+
+    button.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    });
+</script>
+
+  
+<button id="toggle-dark" class="boton-flotante">
+  <img src="sol.png" alt="Modo oscuro" class="imagen-boton">
+</button>
+<div class="head">
+      <a href="parcialwoofle HTML.html">
+         <img src="../WOOFLE PAGINA WEB/WOOFLE logo.jpg" alt="logo" class="logo">
+      </a>
+</div>
+
+    <div class="contenedor-carrito">
+        <img src="../WOOFLE PAGINA WEB/carrito-de-compras.png" alt="Carrito de compras" class="icono">
+        <h1>Carrito de compras</h1>
+    </div>
+
+<div class="contenedor-fijo">
+    <span class="texto-cont">Total estimado $224.895</span>
+    <button id="checkoutBtn">Finalizar compra</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-contenido">
+        <h2>¡Gracias por tu compra!</h2>
+        <p>Recuerda que el pago es contra entrega.</p>
+        <h3>Deseamos que tu mascota disfrute su compra </h3>
+        <button id="cerrarModal">Cerrar</button>
+    </div>
+</div>
+
+<script>
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  const modal = document.getElementById("modal");
+  const cerrarModal = document.getElementById("cerrarModal");
+
+  // Mostrar modal
+  checkoutBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // bloquea el scroll
+  });
+
+  // Cerrar modal
+  cerrarModal.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // restablece el scroll
+  });
+</script>
+
+
+
+
+
+<div class="chatbot-container">
+  <button id="chatbot-toggle">
+    <img src="bot_regular_icon_203029.png" alt="Chat" />
+  </button>
+  <div class="chatbot-panel">
+    <div class="chatbot-header">Chat con Woofy</div>
+    <div class="chatbot-messages"></div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbot-text" placeholder="Escribe tu mensaje...">
+      <button id="chatbot-send">Enviar</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggleBtn = document.getElementById("chatbot-toggle");
+  const panel = document.querySelector(".chatbot-panel");
+  const sendBtn = document.getElementById("chatbot-send");
+  const input = document.getElementById("chatbot-text");
+  const messages = document.querySelector(".chatbot-messages");
+
+  
+  toggleBtn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    panel.classList.toggle("open");
+
+    if (!panel.dataset.initial && panel.classList.contains("open")) {
+      const msg = document.createElement("div");
+      msg.classList.add("bot-message");
+      msg.innerHTML = `🐾 Hola, soy Woofy! 🐶<br>
+      ¡Gracias por contactarnos! Estoy aquí para ayudarte con cualquier duda. 🧸✨<br><br>
+      ¿En qué puedo ayudarte hoy? 💬`;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+      panel.dataset.initial = "true";
+    }
+  });
+
+  
+  document.addEventListener("click", function(e) {
+    if (panel.classList.contains("open") && !panel.contains(e.target) && e.target !== toggleBtn) {
+      panel.classList.remove("open");
+    }
+  });
+
+  panel.addEventListener("click", function(e) {
+    e.stopPropagation();
+  });
+
+ 
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    const userMsg = document.createElement("div");
+    userMsg.classList.add("message", "user-message");
+    userMsg.textContent = text;
+    messages.appendChild(userMsg);
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+
+    setTimeout(() => {
+      const reply = document.createElement("div");
+      reply.classList.add("message", "bot-message");
+      reply.innerHTML = `🐾 Woofy dice: Para más información contáctanos vía WhatsApp al <a href="https://wa.me/5730581824919" target="_blank">+57-305-81824919</a> 📱`;
+      messages.appendChild(reply);
+      messages.scrollTop = messages.scrollHeight;
+    }, 500);
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") sendMessage();
+  });
+});
+
+</script>
+
+
+<div class="producto-contenedor">
+  <a href="Alimento Para Perro Royal Canin Veterinary Health Nutrition Satiety Weight Management - Royal Canin 3,5 kg.html" class="producto">
+    <img src="https://puppiscolombia.vtexassets.com/arquivos/ids/198216-1600-1600?v=638816331743330000&width=1600&height=1600&aspect=true" alt="Producto Royal Canin" class="img">
+    <p class="descripcion">Alimento Para Perro Royal Canin Veterinary Health Nutrition Satiety Weight Management - Royal Canin 3,5 kg</p>
+    <h3>$219.000</h3>
+  </a>
+
+  <div class="cantidad">
+    <button class="menos">-</button>
+    <span class="numero">1</span>
+    <button class="mas">+</button>
+  </div>
+</div>
+
+
+<div class="producto-contenedor">
+    <a href="Alimento Húmedo Para Perro Wow Can Cerdo - Wow Can.html" class="producto">
+      <img src="https://puppiscolombia.vtexassets.com/arquivos/ids/179844-1600-1600?v=637801236806200000&width=1600&height=1600&aspect=true" alt="Producto 3" class="img">
+      <p class="descripcion">Alimento Húmedo Para Perro Wow Can Cerdo - Wow Can 300 g</p>
+<h3>$5.895</h3>
+    </a>
+
+  <div class="cantidad">
+    <button class="menos">-</button>
+    <span class="numero">1</span>
+    <button class="mas">+</button>
+  </div>
+</div>
+
+
+
+
+<script>
+document.querySelectorAll('.producto-contenedor').forEach(contenedor => {
+  const menosBtn = contenedor.querySelector('.menos');
+  const masBtn = contenedor.querySelector('.mas');
+  const numero = contenedor.querySelector('.numero');
+  
+  let cantidad = 1;
+
+  masBtn.addEventListener('click', () => {
+    cantidad++;
+    numero.textContent = cantidad;
+  });
+
+  menosBtn.addEventListener('click', () => {
+    if (cantidad > 1) {
+      cantidad--;
+      numero.textContent = cantidad;
+    }
+  });
+});
+</script>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('toggle-dark');
+    btn.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+    });
+  });
+</script>
+
+</body>
+</html>
